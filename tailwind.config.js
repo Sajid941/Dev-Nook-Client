@@ -9,11 +9,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        "dark-primary": '#0A0E14'
+        "dark-primary": '#0A0E14',
+        "primary-color": '#118ab2'
+      },
+      backgroundImage: {
+        'wave': "url('./src/assets/wave-haikei (1).svg')",
+        'wave-2': "url('./src/assets/wave-haikei (3).svg')"
       }
 
-    },
-
   },
-  plugins: [daisyui],
+
+},
+plugins: [daisyui],
 }
