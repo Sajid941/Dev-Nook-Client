@@ -1,13 +1,23 @@
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
+import UseAuth from "../../hooks/UseAuth";
+import toast from "react-hot-toast";
 
 const Login = () => {
+    const {logIn} =UseAuth()
     const handleLogin = e => {
         e.preventDefault()
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password)
+        logIn(email,password)
+        .then(result =>{
+            toast.success(`${result.user.displayName} Login Successfully`,{duration:4000})
+        })
+        .catch(error =>{
+            console.error(error)
+            toast.error(error.message, {duration:5000})
+        })
     }
     return (
         <div className="h-screen flex justify-center md:items-center pt-20 bg-circle dark:bg-circle-2 bg-no-repeat bg-cover">
