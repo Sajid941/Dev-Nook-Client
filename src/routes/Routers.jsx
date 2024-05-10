@@ -5,6 +5,7 @@ import Root from "../layout/Root";
 import Home from "../pages/Home";
 import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
+import AddBlogs from "../pages/AddBlogs";
 
   const router = createBrowserRouter([
     {
@@ -16,12 +17,16 @@ import Register from "../pages/auth/Register";
             element:<Home/>
           },
           {
-            path:'login',
+            path:'/login',
             element:<Login/>
           },
           {
-            path:'register',
+            path:'/register',
             element:<Register/>
+          },
+          {
+            path:'/addBlogs',
+            element:<AddBlogs/>
           }
         ]
     }

@@ -6,7 +6,7 @@ const Banner = () => {
             <div className="md:grid grid-cols-2 justify-center items-center mt-10 bg-white/30 bg-opacity-20 backdrop-blur-lg p-5 rounded-xl shadow-xl">
                 <div className="px-20 space-y-4">
                     <h1 className="text-4xl font-bold">Understanding Quantum Computing</h1>
-                    <p className="text-[#747474]">Gain insights into the principles of quantum computing and its potential impact on computing.</p>
+                    <p className="text-[#747474] dark:text-white">Gain insights into the principles of quantum computing and its potential impact on computing.</p>
                     <button className="btn bg-primary-color hover:bg-[#10a5ca] border-none text-white">Learn More</button>
                 </div>
                 <div>
