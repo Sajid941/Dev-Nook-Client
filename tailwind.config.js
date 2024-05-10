@@ -13,7 +13,9 @@ export default {
       },
       backgroundImage: {
         'wave': "url('./src/assets/wave-haikei (1).svg')",
-        'wave-2': "url('./src/assets/wave-haikei (3).svg')"
+        'wave-2': "url('./src/assets/wave-haikei (3).svg')",
+        'circle': "url('./src/assets/circle-scatter-haikei (1).svg')",
+        'circle-2': "url('./src/assets/circle-scatter-haikei.svg')",
       }
 
     },

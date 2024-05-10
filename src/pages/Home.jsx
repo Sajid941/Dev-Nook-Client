@@ -1,4 +1,4 @@
-import Banner from "../components/Navbar/Banner/Banner";
+import Banner from "../components/Banner/Banner";
 import RecentPost from "../components/RecentPost/RecentPost";
 
 const Home = () => {
