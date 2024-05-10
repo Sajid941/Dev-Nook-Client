@@ -1,5 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-import daisyui from 'daisyui'
 export default {
   darkMode: 'selector',
   content: [
@@ -17,8 +16,9 @@ export default {
         'wave-2': "url('./src/assets/wave-haikei (3).svg')"
       }
 
-  },
+    },
 
-},
-plugins: [daisyui],
+
+  },
+  plugins: [require('daisyui'),],
 }
