@@ -16,13 +16,13 @@ const NavBar = ({ theme, setTheme }) => {
 
     const handleLogout = () => {
         logOut()
-        .then(()=>{
-            toast.success('Logout Successfully')
-        })
-        .catch(error=>{
-            console.log(error);
-            toast.error(error.message)
-        })
+            .then(() => {
+                toast.success('Logout Successfully')
+            })
+            .catch(error => {
+                console.log(error);
+                toast.error(error.message)
+            })
     }
 
     return (
@@ -53,6 +53,12 @@ const NavBar = ({ theme, setTheme }) => {
                     user ?
                         <>
                             <Link onClick={handleLogout} className="py-1 px-4 hover:cursor-pointer font-semibold text-white rounded bg-primary-color">Logout</Link>
+                            <div className="avatar">
+                               
+                                <div className="w-11 rounded-full">
+                                    <img src={user.photoURL} />
+                                </div>
+                            </div>
                         </> :
 
                         // !user ->

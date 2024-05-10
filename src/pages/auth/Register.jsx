@@ -2,10 +2,14 @@ import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import UseAuth from './../../hooks/UseAuth';
 import { updateProfile } from "firebase/auth";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 import toast from "react-hot-toast";
+import { useState } from "react";
 
 const Register = () => {
-    const {createUser}=UseAuth()
+    const [show,setShow]=useState(false)
+    console.log(show);
+    const { createUser } = UseAuth()
     const handleRegister = e => {
         e.preventDefault()
         const form = e.target;
@@ -13,24 +17,35 @@ const Register = () => {
         const photoURL = form.photoUrl.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(displayName,photoURL, email, password)
-        createUser(email,password)
-        .then(result =>{
-            toast.success('Register Successfully',{duration:4000})
-            updateProfile(result.user,{
-                displayName,photoURL
+        if (password.length < 6) {
+            return toast.error('password contains at least 6 character')
+        }
+        else if (!/[A-Z]/.test(password)) {
+            return toast.error('password contains at least one capital letter')
+        }
+        else if (!/[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/.test(password)) {
+            return toast.error('password contains at least one special character.')
+        }
+        if (!/[0-9]/.test(password)) {
+            return toast.error('password contains at least one numeric characters')
+        }
+        createUser(email, password)
+            .then(result => {
+                toast.success('Register Successfully', { duration: 4000 })
+                updateProfile(result.user, {
+                    displayName, photoURL
+                })
+                    .then(() => {
+                        console.log('updated')
+                    })
+                    .catch(error => {
+                        console.error(error)
+                    })
             })
-            .then(()=>{
-                console.log('updated')
-            })
-            .catch(error=>{
+            .catch(error => {
                 console.error(error)
+                toast.error(error.message, { duration: 5000 })
             })
-        })
-        .catch(error =>{
-            console.error(error)
-            toast.error(error.message, {duration:5000})
-        })
     }
     return (
         <div className="h-screen flex justify-center py-10 pt-20 bg-circle dark:bg-circle-2 bg-no-repeat bg-cover">
@@ -70,7 +85,11 @@ const Register = () => {
                                 <label className="label">
                                     <span className="">Password</span>
                                 </label>
-                                <input type="password" name="password" placeholder="Password" className="input input-bordered text-[#181818] dark:bg-white" required />
+                                <div className="relative">
+                                    <input type={show?"text":"password"} name="password" placeholder="Password" className="input input-bordered text-[#181818] dark:bg-white " required />
+                                    <p onClick={()=>setShow(!show)} className="absolute right-3 top-[30%] hover:cursor-pointer">{show?<FaRegEyeSlash size={20}/>:<FaRegEye size={20}/>}</p>
+                                </div>
+
                                 <label className="label">
                                     <a href="#" className="-alt link link-hover">Forgot password?</a>
                                 </label>

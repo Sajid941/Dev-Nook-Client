@@ -1,23 +1,29 @@
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import UseAuth from "../../hooks/UseAuth";
 import toast from "react-hot-toast";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
+import { useState } from "react";
 
 const Login = () => {
-    const {logIn} =UseAuth()
+    const { logIn } = UseAuth()
+    const navigate = useNavigate()
+    const [show, setShow] = useState(false)
+
     const handleLogin = e => {
         e.preventDefault()
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        logIn(email,password)
-        .then(result =>{
-            toast.success(`${result.user.displayName} Login Successfully`,{duration:4000})
-        })
-        .catch(error =>{
-            console.error(error)
-            toast.error(error.message, {duration:5000})
-        })
+        logIn(email, password)
+            .then(result => {
+                toast.success(`${result.user.displayName} Login Successfully`, { duration: 4000 })
+                navigate('/')
+            })
+            .catch(error => {
+                console.error(error)
+                toast.error(error.message, { duration: 5000 })
+            })
     }
     return (
         <div className="h-screen flex justify-center md:items-center pt-20 bg-circle dark:bg-circle-2 bg-no-repeat bg-cover">
@@ -39,7 +45,8 @@ const Login = () => {
                             <label className="label">
                                 <span className="">Password</span>
                             </label>
-                            <input type="password" name="password" placeholder="password" className="input input-bordered text-[#181818] dark:bg-white" required />
+                            <input type={show ? "text" : "password"} name="password" placeholder="Password" className="input input-bordered  text-[#181818] dark:bg-white " required />
+                            <p onClick={()=>setShow(!show)} className="absolute bottom-[50%] right-12 hover:cursor-pointer">{show?<FaRegEyeSlash size={20}/>:<FaRegEye size={20}/>}</p>
                             <label className="label">
                                 <a href="#" className="-alt link link-hover">Forgot password?</a>
                             </label>
