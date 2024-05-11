@@ -6,7 +6,7 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 import { useState } from "react";
 
 const Login = () => {
-    const { logIn } = UseAuth()
+    const { logIn, googleLogin } = UseAuth()
     const navigate = useNavigate()
     const [show, setShow] = useState(false)
 
@@ -16,6 +16,17 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         logIn(email, password)
+            .then(result => {
+                toast.success(`${result.user.displayName} Login Successfully`, { duration: 4000 })
+                navigate('/')
+            })
+            .catch(error => {
+                console.error(error)
+                toast.error(error.message, { duration: 5000 })
+            })
+    }
+    const handleGoogleLogin = () => {
+        googleLogin()
             .then(result => {
                 toast.success(`${result.user.displayName} Login Successfully`, { duration: 4000 })
                 navigate('/')
@@ -46,7 +57,7 @@ const Login = () => {
                                 <span className="">Password</span>
                             </label>
                             <input type={show ? "text" : "password"} name="password" placeholder="Password" className="input input-bordered  text-[#181818] dark:bg-white " required />
-                            <p onClick={()=>setShow(!show)} className="absolute bottom-[50%] right-12 hover:cursor-pointer">{show?<FaRegEyeSlash size={20}/>:<FaRegEye size={20}/>}</p>
+                            <p onClick={() => setShow(!show)} className="absolute bottom-[50%] right-12 hover:cursor-pointer">{show ? <FaRegEyeSlash size={20} /> : <FaRegEye size={20} />}</p>
                             <label className="label">
                                 <a href="#" className="-alt link link-hover">Forgot password?</a>
                             </label>
@@ -56,7 +67,7 @@ const Login = () => {
                         </div>
                         <p className="text-center pb-3">Don,t have account ? <Link to={'/register'} className="hover:text-blue-600 hover:underline">Register</Link> </p>
                         <div className="border-t-2 pt-4 border-[#737373]">
-                            <p className="btn w-full bg-[#073b4c] hover:bg-[#073b4c] text-white border-none"><FcGoogle size={20} /> Login with Google</p>
+                            <p onClick={handleGoogleLogin} className="btn w-full bg-[#073b4c] hover:bg-[#073b4c] text-white border-none"><FcGoogle size={20} /> Login with Google</p>
                         </div>
                     </form>
                 </div>

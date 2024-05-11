@@ -1,5 +1,5 @@
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import UseAuth from './../../hooks/UseAuth';
 import { updateProfile } from "firebase/auth";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
@@ -7,8 +7,9 @@ import toast from "react-hot-toast";
 import { useState } from "react";
 
 const Register = () => {
-    const [show,setShow]=useState(false)
-    console.log(show);
+    const [show, setShow] = useState(false)
+    const { googleLogin } = UseAuth()
+    const navigate = useNavigate()
     const { createUser } = UseAuth()
     const handleRegister = e => {
         e.preventDefault()
@@ -41,6 +42,17 @@ const Register = () => {
                     .catch(error => {
                         console.error(error)
                     })
+            })
+            .catch(error => {
+                console.error(error)
+                toast.error(error.message, { duration: 5000 })
+            })
+    }
+    const handleGoogleLogin = () => {
+        googleLogin()
+            .then(result => {
+                toast.success(`${result.user.displayName} Login Successfully`, { duration: 4000 })
+                navigate('/')
             })
             .catch(error => {
                 console.error(error)
@@ -86,8 +98,8 @@ const Register = () => {
                                     <span className="">Password</span>
                                 </label>
                                 <div className="relative">
-                                    <input type={show?"text":"password"} name="password" placeholder="Password" className="input input-bordered text-[#181818] dark:bg-white " required />
-                                    <p onClick={()=>setShow(!show)} className="absolute right-3 top-[30%] hover:cursor-pointer">{show?<FaRegEyeSlash size={20}/>:<FaRegEye size={20}/>}</p>
+                                    <input type={show ? "text" : "password"} name="password" placeholder="Password" className="input input-bordered text-[#181818] dark:bg-white " required />
+                                    <p onClick={() => setShow(!show)} className="absolute right-3 top-[30%] hover:cursor-pointer">{show ? <FaRegEyeSlash size={20} /> : <FaRegEye size={20} />}</p>
                                 </div>
 
                                 <label className="label">
@@ -100,7 +112,7 @@ const Register = () => {
                         </div>
                         <p className="text-center pb-3">Already have account ? <Link to={'/login'} className="hover:text-blue-600 hover:underline">Login</Link> </p>
                         <div className="border-t-2 pt-4 border-[#737373]">
-                            <p className="btn w-full bg-[#073b4c] hover:bg-[#073b4c] text-white border-none"><FcGoogle size={20} /> Login with Google</p>
+                            <p onClick={handleGoogleLogin} className="btn w-full bg-[#073b4c] hover:bg-[#073b4c] text-white border-none"><FcGoogle size={20} /> Login with Google</p>
                         </div>
                     </form>
                 </div>
