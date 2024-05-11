@@ -1,10 +1,10 @@
 
 const AddBlogs = () => {
     return (
-        <div className="pt-20 px-20 ">
+        <div className="py-20 px-5 md:px-10 lg:px-20 ">
             <div>
                 <h1 className="text-3xl font-bold text-center">Add Your Blogs</h1>
-                <form className="px-48">
+                <form className="lg:px-48">
                     {/* row-1 */}
                     <div>
                         <label className="label">Title</label>

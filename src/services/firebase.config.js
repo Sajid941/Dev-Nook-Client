@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAT7dd_dvMxhhGqMdfFvr1HmV7PYR5eRiI",
-  authDomain: "a11-devnook.firebaseapp.com",
-  projectId: "a11-devnook",
-  storageBucket: "a11-devnook.appspot.com",
-  messagingSenderId: "111179514006",
-  appId: "1:111179514006:web:da92c2691e2c8ebbb182b7"
+  apiKey: import.meta.env.APIKEY_VITE,
+  authDomain: import.meta.env.AUTHDOMAIN_VITE,
+  projectId: import.meta.env.PROJECTID_VITE,
+  storageBucket: import.meta.env.STORAGEBUCKET_VITE,
+  messagingSenderId: import.meta.env.MESSAGINGSENDERID_VITE,
+  appId: import.meta.env.APPID_VITE
 };
 
 // Initialize Firebase
