@@ -33,11 +33,13 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 toast.success('Register Successfully', { duration: 4000 })
+                navigate('/')
                 updateProfile(result.user, {
                     displayName, photoURL
                 })
-                    .then(() => {
-                        console.log('updated')
+                .then(() => {
+                    console.log('updated')
+                    form.reset()
                     })
                     .catch(error => {
                         console.error(error)

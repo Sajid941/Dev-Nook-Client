@@ -37,9 +37,9 @@ const Login = () => {
             })
     }
     return (
-        <div className="h-screen flex justify-center md:items-center pt-20 bg-circle dark:bg-circle-2 bg-no-repeat bg-cover">
+        <div className=" flex justify-center md:items-center pt-20 bg-circle dark:bg-circle-2 bg-no-repeat bg-cover">
             <div>
-                <div className="card shrink-0 max-w-sm shadow-2xl bg-white/30 bg-opacity-30 backdrop-blur-lg">
+                <div className="card shrink-0 max-w-sm my-10 shadow-2xl bg-white/30 bg-opacity-30 backdrop-blur-lg">
                     <div>
                     </div>
                     <form onSubmit={handleLogin} className="card-body md:w-96 w-80">

@@ -63,8 +63,8 @@ const NavBar = ({ theme, setTheme }) => {
 
                         // !user ->
                         <>
-                            <Link to={'login'} className="py-1 px-4 hover:cursor-pointer font-semibold text-white rounded bg-primary-color">Login</Link>
-                            <Link to={'register'} className="py-1 px-4 hover:cursor-pointer font-semibold text-white rounded bg-[#073B4C] hidden md:block">Register</Link>
+                            <Link to={'login'} className="py-1 px-4 hover:cursor-pointer font-semibold text-white rounded bg-primary-color hover:bg-[#10a5ca]">Login</Link>
+                            <Link to={'register'} className="py-1 px-4 hover:cursor-pointer font-semibold text-white rounded bg-[#073B4C] hover:bg-[#145265] hidden md:block">Register</Link>
                         </>
                 }
             </div>
