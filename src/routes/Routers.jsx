@@ -32,7 +32,8 @@ const router = createBrowserRouter([
       },
       {
         path:'allBlogs',
-        element:<AllBlogs/>
+        element:<AllBlogs/>,
+        loader:()=>fetch('http://localhost:3000/blogs')
       }
     ]
   }

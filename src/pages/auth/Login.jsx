@@ -57,7 +57,7 @@ const Login = () => {
                                 <span className="">Password</span>
                             </label>
                             <input type={show ? "text" : "password"} name="password" placeholder="Password" className="input input-bordered  text-[#181818] dark:bg-white " required />
-                            <p onClick={() => setShow(!show)} className="absolute bottom-[50%] right-12 hover:cursor-pointer">{show ? <FaRegEyeSlash size={20} /> : <FaRegEye size={20} />}</p>
+                            <p onClick={() => setShow(!show)} className="absolute bottom-[50%] right-12 text-black hover:cursor-pointer">{show ? <FaRegEyeSlash size={20} /> : <FaRegEye size={20} />}</p>
                             <label className="label">
                                 <a href="#" className="-alt link link-hover">Forgot password?</a>
                             </label>
