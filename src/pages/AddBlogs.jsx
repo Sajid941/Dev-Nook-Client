@@ -77,7 +77,7 @@ const AddBlogs = () => {
                             <textarea name="long_description" className="text-[18px] border-2 border-[#747474] dark:bg-[#0a0e14] rounded w-full p-3" rows={6} placeholder="Long Description"></textarea>
                         </div>
                     </div>
-                    <input type="submit" value="Submit" className='btn bg-primary-color w-full text-white' />
+                    <input type="submit" value="Submit" className='btn bg-primary-color hover:bg-[#01c2d9] w-full text-white' />
                 </form>
             </div>
         </div>

@@ -17,7 +17,7 @@ const RecentPost = () => {
     return (
         <div>
             <div className="text-center  px-5 md:px-0 space-y-3">
-                <h1 className="text-3xl font-bold ">Newest Blogs</h1>
+                <h1 className="text-3xl font-bold ">RECENT PUBLICATIONS</h1>
                 <p className="text-[#747474] dark:text-white">Stay updated with the latest in tech.<br /> Explore our newest articles  covering programming, web development, cybersecurity, and more!</p>
             </div>
             <div className="md:grid md:grid-cols-2 my-10 lg:grid-cols-3 px-5 md:px-10 lg:px-20 gap-6 space-y-6 md:space-y-0">

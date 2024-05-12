@@ -13,7 +13,6 @@ const NavBar = ({ theme, setTheme }) => {
         <li><NavLink to={'featuredBlogs'}>Featured Blogs</NavLink></li>
         <li><NavLink to={'wishlist'}>Wishlist</NavLink></li>
     </>
-
     const handleLogout = () => {
         logOut()
             .then(() => {
@@ -56,7 +55,7 @@ const NavBar = ({ theme, setTheme }) => {
                             <div className="avatar">
                                
                                 <div className="w-11 rounded-full">
-                                    <img src={user.photoURL} />
+                                    <img src={user?.photoURL} />
                                 </div>
                             </div>
                         </> :
