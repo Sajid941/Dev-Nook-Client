@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import PropTypes from 'prop-types'
+import axios from 'axios';
 import app from './../services/firebase.config';
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 
@@ -29,13 +30,18 @@ const AuthProvider = ({children}) => {
         setLoading(true)
         return signOut(auth)
     }
+
+    const addWishlist = (data)=>{
+        return axios.post('http://localhost:3000/wishlist',data)
+    }
     const authInfo = {
         user,
         loading,
         createUser,
         logIn,
         googleLogin,
-        logOut
+        logOut,
+        addWishlist
         
     }
 
