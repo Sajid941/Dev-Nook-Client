@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import UseAuth from '../../hooks/UseAuth';
 import toast from 'react-hot-toast';
-const RecentPostCard = ({ blog }) => {
+const BlogCard = ({ blog }) => {
     const { user, addWishlist } = UseAuth()
     const { title, photoURL, category, short_description } = blog;
     const data =
@@ -26,13 +26,13 @@ const RecentPostCard = ({ blog }) => {
             })
     }
     return (
-        <div className="card  bg-base-100 shadow-xl p-5 border">
+        <div className="card  bg-base-100 dark:bg-[#0a0e14] shadow-xl p-5 border">
             <figure><img src={photoURL} className="md:h-[280px] w-full object-cover  rounded-lg" alt="Shoes" /></figure>
             <div className="card-body">
                 <h2 className="card-title font-bold">
                     {title}
                 </h2>
-                <div className="badge bg-[#06d6a0] ">{category}</div>
+                <div className="badge bg-[#06d6a0] border-none ">{category}</div>
                 <p>{short_description}</p>
                 <div className="card-actions justify-end">
                     <div onClick={handleAddWishlist} className=" py-1 px-4 rounded-xl hover:cursor-pointer bg-primary-color text-white hover:bg-[#10a5ca]">Wishlist</div>
@@ -43,7 +43,7 @@ const RecentPostCard = ({ blog }) => {
     );
 };
 
-export default RecentPostCard;
-RecentPostCard.propTypes = {
+export default BlogCard;
+BlogCard.propTypes = {
     blog: PropTypes.object,
 }

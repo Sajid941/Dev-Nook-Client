@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import RecentPostCard from "../RecentPostCard/RecentPostCard";
+import BlogCard from "../BlogCard/BlogCard";
 
 const RecentPost = () => {
     const { data: blogs, isPending, } = useQuery({
@@ -22,7 +22,7 @@ const RecentPost = () => {
             </div>
             <div className="md:grid md:grid-cols-2 my-10 lg:grid-cols-3 px-5 md:px-10 lg:px-20 gap-6 space-y-6 md:space-y-0">
                 {
-                    blogs.slice(0, 6).map(blog =><RecentPostCard key={blog._id} blog={blog}/> )
+                    blogs.slice(0, 6).map(blog =><BlogCard key={blog._id} blog={blog}/> )
                 }
             </div>
         </div>
