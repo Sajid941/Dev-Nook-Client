@@ -26,7 +26,7 @@ const AllBlogs = () => {
 
     }
     return (
-        <div className="pt-20">
+        <div className="pt-16">
             <div>
                 <div className="h-20 w-full bg-gradient-to-l to-[#d1f6fc] via-[#a2f8d6] from-[#a9ecf8]">
 

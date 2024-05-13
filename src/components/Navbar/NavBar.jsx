@@ -25,7 +25,7 @@ const NavBar = ({ theme, setTheme }) => {
     }
 
     return (
-        <div className="navbar fixed z-20 bg-white/20 bg-opacity-20 backdrop-blur-lg lg:px-20">
+        <div className="navbar fixed z-20 bg-white/20 bg-opacity-20 backdrop-blur-lg shadow-md lg:px-20">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
