@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 const Comments = ({ comment }) => {
     console.log(comment);
     const commentDate = moment(comment.formatDate, "YYYYMMDDHHmmss").fromNow();
-    console.log(commentDate);
     return (
         <div className='bg-[#f9fafb] p-5 rounded-xl border dark:bg-[#0a0e14] space-y-3 lg:ml-16'>
             <div className='flex gap-2 items-center'>

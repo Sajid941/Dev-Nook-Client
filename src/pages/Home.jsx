@@ -5,6 +5,9 @@ import Reviews from "../components/Reviews/Reviews";
 import TopAuthors from "../components/TopAuthors/TopAuthors";
 
 const Home = () => {
+    window.onbeforeunload = function () {
+        window.scrollTo(0, 0);
+    }
     return (
         <div>
             <Banner/>
