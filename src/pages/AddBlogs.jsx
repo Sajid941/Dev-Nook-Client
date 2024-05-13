@@ -36,14 +36,14 @@ const AddBlogs = () => {
                     {/* row-1 */}
                     <div>
                         <label className="label">Title</label>
-                        <input type="text" name="title" placeholder="Enter your blog title" className="input-md text-[18px] border-2 border-[#747474] dark:bg-[#0a0e14] rounded w-full" />
+                        <input type="text" name="title" required placeholder="Enter your blog title" className="input-md text-[18px] border-2 border-[#747474] dark:bg-[#0a0e14] rounded w-full" />
                     </div>
 
                     {/* row-2 */}
                     <div className="md:grid grid-cols-2 gap-2">
                         <div>
                             <label className="label">Photo</label>
-                            <input type="text" name="photoURL" placeholder="Enter your blog photo URL" className="input-md text-[18px] border-2 border-[#747474] dark:bg-[#0a0e14] rounded w-full" />
+                            <input type="text" name="photoURL" required placeholder="Enter your blog photo URL" className="input-md text-[18px] border-2 border-[#747474] dark:bg-[#0a0e14] rounded w-full" />
                         </div>
                         <div>
                             <label className="label">Category</label>
@@ -66,7 +66,7 @@ const AddBlogs = () => {
                     <div>
                         <div>
                             <label className="label">Short Description</label>
-                            <textarea name="short_description" className="text-[18px] border-2 border-[#747474] dark:bg-[#0a0e14] rounded w-full p-3" placeholder="Short Description"></textarea>
+                            <textarea name="short_description" className="text-[18px] border-2 border-[#747474] dark:bg-[#0a0e14] rounded w-full p-3" required placeholder="Short Description"></textarea>
                         </div>
                     </div>
 
@@ -74,7 +74,7 @@ const AddBlogs = () => {
                     <div>
                         <div>
                             <label className="label">Long Description</label>
-                            <textarea name="long_description" className="text-[18px] border-2 border-[#747474] dark:bg-[#0a0e14] rounded w-full p-3" rows={6} placeholder="Long Description"></textarea>
+                            <textarea name="long_description" className="text-[18px] border-2 border-[#747474] dark:bg-[#0a0e14] rounded w-full p-3" rows={6} required placeholder="Long Description"></textarea>
                         </div>
                     </div>
                     <input type="submit" value="Submit" className='btn bg-primary-color hover:bg-[#01c2d9] w-full text-white' />

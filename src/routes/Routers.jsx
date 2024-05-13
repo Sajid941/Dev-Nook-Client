@@ -9,6 +9,7 @@ import AddBlogs from "../pages/AddBlogs";
 import ErrorPage from "../pages/ErrorPage";
 import AllBlogs from "../pages/AllBlogs";
 import BlogDetails from "../pages/BlogDetails";
+import UpdateBlogs from "../pages/UpdateBlogs";
 const router = createBrowserRouter([
   {
     path: '/',
@@ -39,6 +40,11 @@ const router = createBrowserRouter([
       {
         path:'/blogDetails/:id',
         element:<BlogDetails/>,
+        loader:({params})=>fetch(`http://localhost:3000/blogs/${params.id}`)
+      },
+      {
+        path:"/updateBlogs/:id",
+        element:<UpdateBlogs/>,
         loader:({params})=>fetch(`http://localhost:3000/blogs/${params.id}`)
       }
     ]
