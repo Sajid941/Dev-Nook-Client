@@ -1,11 +1,11 @@
 import { Link, NavLink } from "react-router-dom";
 import PropTypes from 'prop-types'
 import "./NavBar.css"
-import UseAuth from "../../hooks/UseAuth";
+import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 
 const NavBar = ({ theme, setTheme }) => {
-    const { user, logOut } = UseAuth()
+    const { user, logOut } = useAuth()
     const navLinks = <>
         <li><NavLink to={'/'}>Home</NavLink></li>
         <li><NavLink to={'addBlogs'}>Add Blogs</NavLink></li>

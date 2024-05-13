@@ -1,12 +1,12 @@
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
-import UseAuth from "../../hooks/UseAuth";
+import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 import { useState } from "react";
 
 const Login = () => {
-    const { logIn, googleLogin } = UseAuth()
+    const { logIn, googleLogin } = useAuth()
     const navigate = useNavigate()
     const [show, setShow] = useState(false)
 

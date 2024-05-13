@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types'
-import UseAuth from '../../hooks/UseAuth';
+import useAuth from '../../hooks/useAuth';
 import toast from 'react-hot-toast';
 import moment from 'moment'
 import { Link } from 'react-router-dom';
 
 const BlogCard = ({ blog }) => {
-    const { user, addWishlist } = UseAuth()
+    const { user, addWishlist } = useAuth()
     const { _id, title, image, category, short_description } = blog;
 
     const date = moment().subtract(10, 'days').calendar();

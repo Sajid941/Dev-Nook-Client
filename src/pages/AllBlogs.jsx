@@ -18,12 +18,10 @@ const AllBlogs = () => {
                 .then(res => {
                     setBlogs(res.data)
                 })
-                .catch(error =>{
+                .catch(error => {
                     toast.error(error.message)
                 })
         }
-
-
     }
     return (
         <div className="pt-16">
@@ -39,7 +37,15 @@ const AllBlogs = () => {
                                 </svg>
                             </div>
                             <input type="search" id="default-search" name="search_text" className="block w-full p-4 px-10 ps-10 text-sm text-gray-900 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white outline-none shadow-lg" placeholder="Search..." />
-                            <button type="submit" className="text-white absolute end-2.5 bottom-2.5 bg-primary-color   focus:outline-none font-medium rounded-lg text-sm px-4 py-2 ">Search</button>
+                            {/* <button type="submit" className="text-white absolute end-2.5 bottom-2.5 bg-primary-color   focus:outline-none font-medium rounded-lg text-sm px-4 py-2 ">Search</button> */}
+                            <select name="filter" className=" focus:outline-none border-none text-[#747474] bg-none absolute end-2.5 bottom-2  font-medium rounded-lg text-sm px-2 py-2 ">
+                                <option defaultValue="Technology" disabled selected>Filter</option>
+                                <option>Technology</option>
+                                <option>Web Development</option>
+                                <option>Programming</option>
+                                <option>Python</option>
+                            </select>
+
                         </div>
                     </form>
 
@@ -48,8 +54,8 @@ const AllBlogs = () => {
             <div className="md:grid md:grid-cols-2 my-20 lg:grid-cols-3 px-5 md:px-10 lg:px-20 gap-6 space-y-6 md:space-y-0">
                 {
                     blogs.length == 0 ?
-                    <p className="text-3xl font-bold col-span-3 text-center">No Result Found</p>:
-                    blogs.map((blog, idx) => <BlogCard key={idx} blog={blog} />)
+                        <p className="text-3xl font-bold col-span-3 text-center">No Result Found</p> :
+                        blogs.map((blog, idx) => <BlogCard key={idx} blog={blog} />)
                 }
             </div>
         </div>

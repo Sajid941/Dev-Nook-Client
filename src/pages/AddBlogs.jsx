@@ -1,9 +1,9 @@
-import UseAuth from './../hooks/UseAuth';
+import useAuth from '../hooks/useAuth';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 
 const AddBlogs = () => {
-    const { user } = UseAuth()
+    const { user } = useAuth()
 
     const handleAddBlog = e => {
         e.preventDefault()

@@ -1,6 +1,6 @@
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
-import UseAuth from './../../hooks/UseAuth';
+import useAuth from '../../hooks/useAuth';
 import { updateProfile } from "firebase/auth";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 import toast from "react-hot-toast";
@@ -8,9 +8,9 @@ import { useState } from "react";
 
 const Register = () => {
     const [show, setShow] = useState(false)
-    const { googleLogin } = UseAuth()
+    const { googleLogin } = useAuth()
     const navigate = useNavigate()
-    const { createUser } = UseAuth()
+    const { createUser } = useAuth()
     const handleRegister = e => {
         e.preventDefault()
         const form = e.target;
