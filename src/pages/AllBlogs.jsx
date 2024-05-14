@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { motion } from 'framer-motion';
 
 const AllBlogs = () => {
     const loadedBlogs = useLoaderData()
@@ -24,7 +25,11 @@ const AllBlogs = () => {
         }
     }
     return (
-        <div className="pt-16">
+        <motion.div className="pt-16"
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+        >
             <div>
                 <div className="h-20 w-full bg-gradient-to-l to-[#d1f6fc] via-[#a2f8d6] from-[#a9ecf8]">
 
@@ -58,7 +63,7 @@ const AllBlogs = () => {
                         blogs.map((blog, idx) => <BlogCard key={idx} blog={blog} />)
                 }
             </div>
-        </div>
+        </motion.div>
     );
 };
 
