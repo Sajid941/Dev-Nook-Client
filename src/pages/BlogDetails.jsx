@@ -75,18 +75,21 @@ const BlogDetails = () => {
                 <div className="border-b-2 pb-5">
                     <h4 className="text-3xl font-bold">{comments?.length} C O M M E N T S</h4>
                 </div>
-                <div className="my-8 flex justify-start gap-3">
-                    <div className="avatar">
-                        <div className="w-12 h-12 rounded-full">
-                            <img src={user?.photoURL} />
+                {
+                    user &&
+                    <div className="my-8 flex justify-start gap-3">
+                        <div className="avatar">
+                            <div className="w-12 h-12 rounded-full">
+                                <img src={user?.photoURL} />
+                            </div>
                         </div>
+                        <form onSubmit={handlePostComment} className="w-full">
+                            <textarea name="comment" className="textarea textarea-bordered w-full focus:outline-none" rows={5} placeholder="Write a comment..."></textarea>
+                            <button className="btn bg-[#1a485f] text-white hover:bg-[#1a5770]">Post Comment</button>
+                        </form>
                     </div>
-                    <form onSubmit={handlePostComment} className="w-full">
-                        <textarea name="comment" className="textarea textarea-bordered w-full focus:outline-none" rows={5} placeholder="Write a comment..."></textarea>
-                        <button className="btn bg-[#1a485f] text-white hover:bg-[#1a5770]">Post Comment</button>
-                    </form>
-                </div>
-                <div className="space-y-5">
+                }
+                <div className="space-y-5 mt-5">
                     {
                         comments?.map(comment => <Comments key={comment._id} comment={comment}></Comments>)
                     }

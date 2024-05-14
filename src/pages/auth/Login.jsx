@@ -1,5 +1,5 @@
 import { FcGoogle } from "react-icons/fc";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
@@ -7,6 +7,8 @@ import { useState } from "react";
 
 const Login = () => {
     const { logIn, googleLogin } = useAuth()
+    const { state } = useLocation()
+    console.log(state);
     const navigate = useNavigate()
     const [show, setShow] = useState(false)
 
@@ -18,7 +20,7 @@ const Login = () => {
         logIn(email, password)
             .then(result => {
                 toast.success(`${result.user.displayName} Login Successfully`, { duration: 4000 })
-                navigate('/')
+                navigate(state ? state : '/')
             })
             .catch(error => {
                 console.error(error)
@@ -29,7 +31,7 @@ const Login = () => {
         googleLogin()
             .then(result => {
                 toast.success(`${result.user.displayName} Login Successfully`, { duration: 4000 })
-                navigate('/')
+                navigate(state ? state : "/")
             })
             .catch(error => {
                 console.error(error)

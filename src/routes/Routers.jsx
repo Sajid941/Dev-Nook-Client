@@ -11,6 +11,7 @@ import AllBlogs from "../pages/AllBlogs";
 import BlogDetails from "../pages/BlogDetails";
 import UpdateBlogs from "../pages/UpdateBlogs";
 import Wishlist from "../pages/Wishlist";
+import PrivateRoute from "./PrivateRoute";
 const router = createBrowserRouter([
   {
     path: '/',
@@ -45,12 +46,12 @@ const router = createBrowserRouter([
       },
       {
         path:"/updateBlogs/:id",
-        element:<UpdateBlogs/>,
+        element:<PrivateRoute><UpdateBlogs/></PrivateRoute>,
         loader:({params})=>fetch(`http://localhost:3000/blogs/${params.id}`)
       },
       {
         path:'/wishlist',
-        element:<Wishlist/>
+        element:<PrivateRoute><Wishlist/></PrivateRoute>
       }
 
     ]

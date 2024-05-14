@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { Toaster } from 'react-hot-toast';
 import Footer from "../components/Footer/Footer";
 
-
 const Root = () => {
 
     const localTheme = JSON.parse(localStorage.getItem('theme'))
