@@ -3,11 +3,11 @@ import useAuth from '../../hooks/useAuth';
 import toast from 'react-hot-toast';
 import moment from 'moment'
 import { Link, useLocation } from 'react-router-dom';
-import axios from 'axios';
 import Swal from 'sweetalert2'
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 const BlogCard = ({ blog }) => {
-
+    const axiosSecure = useAxiosSecure()
     const { pathname } = useLocation()
     const { user, addWishlist } = useAuth()
     const { _id, id, title, image, category, short_description } = blog;
@@ -50,7 +50,7 @@ const BlogCard = ({ blog }) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:3000/wishlist/${_id}`)
+                axiosSecure.delete(`/wishlist/${_id}`)
                     .then(res => {
                         console.log(res.data);
                         if (res.data.deletedCount > 0) {

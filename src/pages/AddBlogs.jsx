@@ -1,10 +1,11 @@
 import useAuth from '../hooks/useAuth';
-import axios from 'axios';
 import { toast } from 'react-hot-toast';
+import useAxiosSecure from '../hooks/useAxiosSecure';
 
 const AddBlogs = () => {
     const { user } = useAuth()
-
+    const axiosSecure = useAxiosSecure()
+    
     const handleAddBlog = e => {
         e.preventDefault()
         const form = e.target;
@@ -14,7 +15,7 @@ const AddBlogs = () => {
         const short_description = form.short_description.value;
         const long_description = form.long_description.value;
         const blogData = { title, image:photoURL, category, short_description, long_description, user_email: user?.email, user_photoURL: user?.photoURL, user_name: user?.displayName }
-        axios.post('http://localhost:3000/blogs', blogData)
+        axiosSecure.post('/blogs', blogData)
             .then(res => {
                 if(res.data.insertedId){
                     toast.success('Blog Added')

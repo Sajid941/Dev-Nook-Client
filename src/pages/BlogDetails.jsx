@@ -1,12 +1,14 @@
 import { Link, useLoaderData } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import moment from "moment";
-import axios from "axios";
 import toast from "react-hot-toast";
 import { useQuery } from "@tanstack/react-query";
 import Comments from "../components/Comments/Comments";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const BlogDetails = () => {
+    const axiosSecure = useAxiosSecure()
+
     const { user } = useAuth()
     const blog = useLoaderData()
     const { _id, title, image, category, short_description, long_description, user_email } = blog;
@@ -35,7 +37,7 @@ const BlogDetails = () => {
             return toast.error('Can not comment on own blog')
         }
         else {
-            axios.post('http://localhost:3000/comments', commentData)
+            axiosSecure.post('/comments', commentData)
                 .then(res => {
                     if (res.data.insertedId) {
                         toast.success('Comment posted')

@@ -11,7 +11,9 @@ const NavBar = ({ theme, setTheme }) => {
         <li><NavLink to={'addBlogs'}>Add Blogs</NavLink></li>
         <li><NavLink to={'allBlogs'}>All Blog</NavLink></li>
         <li><NavLink to={'featuredBlogs'}>Featured Blogs</NavLink></li>
-        <li><NavLink to={'wishlist'}>Wishlist</NavLink></li>
+        {
+            user&& <li><NavLink to={'wishlist'}>Wishlist</NavLink></li>
+        }
     </>
     const handleLogout = () => {
         logOut()

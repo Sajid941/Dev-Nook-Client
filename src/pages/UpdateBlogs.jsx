@@ -1,8 +1,9 @@
-import axios from "axios";
 import toast from "react-hot-toast";
 import { useLoaderData, useNavigate } from "react-router-dom";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const UpdateBlogs = () => {
+    const axiosSecure = useAxiosSecure()
     const blog = useLoaderData()
     const navigate = useNavigate()
     const { _id,title, image, category, short_description, long_description } = blog;
@@ -17,7 +18,7 @@ const UpdateBlogs = () => {
         const long_description = form.long_description.value;
         const blogData = { title, image: photoURL, category, short_description, long_description }
 
-        axios.patch(`http://localhost:3000/blogs/${_id}`, blogData)
+        axiosSecure.patch(`/blogs/${_id}`, blogData)
             .then(res => {
                 if (res.data.modifiedCount > 0) {
                     toast.success('Blog Updated')

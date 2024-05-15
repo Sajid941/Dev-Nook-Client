@@ -1,13 +1,13 @@
 import { createContext, useEffect, useState } from "react";
 import PropTypes from 'prop-types'
-import axios from 'axios';
 import app from './../services/firebase.config';
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const auth = getAuth(app);
-export const AuthContext = createContext(null)
-
-const AuthProvider = ({ children }) => {
+export const AuthContext = createContext({})
+const AuthProvider = ({ children }) => { 
+    const axiosSecure = useAxiosSecure()
     const googleProvider = new GoogleAuthProvider()
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
@@ -36,16 +36,29 @@ const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
             console.log(currentUser)
+            const loggedUser = { email: currentUser?.email }
+            if (currentUser) {
+                axiosSecure.post('/jwt', loggedUser)
+                    .then(res => {
+                        console.log(res.data);
+                    })
+            }
+            else {
+                axiosSecure.post('/logout', loggedUser)
+                    .then(res => {
+                        console.log(res.data);
+                    })
+            }
             setLoading(false)
         })
         return () => unsubscribe()
-    }, [])
+    }, [axiosSecure])
 
     // Sheared Fetching
     const addWishlist = (data) => {
-        return axios.post('http://localhost:3000/wishlist', data)
+        return axiosSecure.post('/wishlist', data)
     }
-     
+
     const authInfo = {
         user,
         loading,

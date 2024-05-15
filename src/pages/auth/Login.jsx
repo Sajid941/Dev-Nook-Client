@@ -8,7 +8,6 @@ import { useState } from "react";
 const Login = () => {
     const { logIn, googleLogin } = useAuth()
     const { state } = useLocation()
-    console.log(state);
     const navigate = useNavigate()
     const [show, setShow] = useState(false)
 

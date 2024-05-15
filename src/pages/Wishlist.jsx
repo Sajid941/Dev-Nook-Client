@@ -1,15 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../hooks/useAuth";
 import BlogCard from "../components/BlogCard/BlogCard";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const Wishlist = () => {
+    const axiosSecure = useAxiosSecure()
     const { user } = useAuth()
     const { data: blogs, isPending } = useQuery({
         queryKey: ['wishlist'],
-        queryFn: async () => {
-            const res = await fetch(`http://localhost:3000/wishlist?email=${user.email}`)
-            return res.json()
-        }
+        queryFn: () => axiosSecure(`/wishlist?email=${user.email}`)
+            .then(res => {
+                return res.data
+            })
+
     })
 
     if (isPending) {
