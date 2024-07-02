@@ -6,7 +6,7 @@ const FeaturedBlogs = () => {
     const { data: blogs, isPending } = useQuery({
         queryKey: ['featured blogs'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:3000/blogs')
+            const res = await fetch('https://a11-dev-nook-server.vercel.app/blogs')
             return res.json()
         }
     })

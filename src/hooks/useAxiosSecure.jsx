@@ -4,7 +4,7 @@ import { getAuth, signOut } from "firebase/auth";
 import app from "../services/firebase.config";
 const auth = getAuth(app);
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:3000',
+    baseURL: 'https://a11-dev-nook-server.vercel.app',
     withCredentials: true
 })
 const useAxiosSecure = () => {

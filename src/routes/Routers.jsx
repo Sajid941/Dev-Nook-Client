@@ -38,17 +38,17 @@ const router = createBrowserRouter([
       {
         path:'/allBlogs',
         element:<AllBlogs/>,
-        loader:()=>fetch('http://localhost:3000/blogs')
+        loader:()=>fetch('https://a11-dev-nook-server.vercel.app/blogs')
       },
       {
         path:'/blogDetails/:id',
         element:<BlogDetails/>,
-        loader:({params})=>fetch(`http://localhost:3000/blogs/${params.id}`)
+        loader:({params})=>fetch(`https://a11-dev-nook-server.vercel.app/blogs/${params.id}`)
       },
       {
         path:"/updateBlogs/:id",
         element:<PrivateRoute><UpdateBlogs/></PrivateRoute>,
-        loader:({params})=>fetch(`http://localhost:3000/blogs/${params.id}`)
+        loader:({params})=>fetch(`https://a11-dev-nook-server.vercel.app/blogs/${params.id}`)
       },
       {
         path:'/wishlist',

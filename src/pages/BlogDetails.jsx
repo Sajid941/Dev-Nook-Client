@@ -16,7 +16,7 @@ const BlogDetails = () => {
     const { data: comments, isPending } = useQuery({
         queryKey: ['comments'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:3000/comments?id=${_id}`)
+            const res = await fetch(`https://a11-dev-nook-server.vercel.app/comments?id=${_id}`)
             return res.json()
         }
     })
