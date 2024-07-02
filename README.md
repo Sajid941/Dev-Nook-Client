@@ -1,9 +1,6 @@
 # Dev Nook
 Dev Nook is built with a focus on user experience, community engagement, and content quality. It provides a platform for users to share their knowledge, stay updated on the latest tech trends, and connect with like-minded individuals.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
 
 - [@liveLink](https://a11-devnook.web.app/)
 
